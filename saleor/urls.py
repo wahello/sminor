@@ -34,16 +34,28 @@ non_translatable_urlpatterns = [
 
 translatable_urlpatterns = [
     url(r'^', include(core_urls)),
+
     url(r'^heimilistaeki/', include(core_urls)),
     url(r'^raflagnadeild/', include(core_urls)),
+
     url(r'^cart/', include((cart_urls, 'cart'), namespace='cart')),
     url(r'^checkout/',
         include((checkout_urls, 'checkout'), namespace='checkout')),
     url(r'^jsi18n/$', JavaScriptCatalog.as_view(), name='javascript-catalog'),
     url(r'^order/', include((order_urls, 'order'), namespace='order')),
     url(r'^page/', include((page_urls, 'page'), namespace='page')),
+
+    url(r'^heimilistaeki/page/', include((page_urls, 'page'), namespace='page')),
+    url(r'^raflagnadeild/page/', include((page_urls, 'page'), namespace='page')),
+
     url(r'^products/',
         include((product_urls, 'product'), namespace='product')),
+
+    url(r'^heimilistaeki/products/',
+        include((product_urls, 'product'), namespace='product')),
+    url(r'^raflagnadeild/products/',
+        include((product_urls, 'product'), namespace='product')),
+
     url(r'^account/',
         include((account_urls, 'account'), namespace='account')),
     url(r'^feeds/',

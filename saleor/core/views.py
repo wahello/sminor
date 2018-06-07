@@ -11,17 +11,25 @@ from ..product.utils import products_for_homepage
 from ..product.utils.availability import products_with_availability
 from ..seo.schema.webpage import get_webpage_schema
 
+from ..product.models import Category
+
 
 def home(request):
     products = products_for_homepage()[:8]
     products = products_with_availability(
         products, discounts=request.discounts, taxes=request.taxes,
         local_currency=request.currency)
+    # defínering í python
+    categories = Category.tree.root_nodes().order_by('name')
+
     webpage_schema = get_webpage_schema(request)
     return TemplateResponse(
         request, 'home.html', {
             'parent': None,
             'products': products,
+            # skilgreining í html
+            'categories': categories,
+            
             'webpage_schema': json.dumps(webpage_schema)})
 
 

@@ -23,6 +23,9 @@ from ..seo.fields import SeoDescriptionField, SeoTitleField
 from ..seo.utils import prepare_seo_description
 from ..widgets import RichTextEditorWidget
 from .widgets import ImagePreviewWidget
+# HTML editor:
+from django.contrib.flatpages.models import FlatPage
+from tinymce.widgets import TinyMCE
 
 
 class RichTextField(forms.CharField):
@@ -45,6 +48,12 @@ class RichTextField(forms.CharField):
             value, tags=tags, attributes=attributes, styles=styles)
         return value
 
+class FlatPageForm(forms.ModelForm):
+    content = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}))
+    class Meta:
+        model = FlatPage
+        exclude = []
+        fields = ['content']
 
 class ProductTypeSelectorForm(forms.Form):
     """Form that allows selecting product type."""
@@ -67,7 +76,7 @@ def get_tax_rate_type_choices():
 class ProductTypeForm(forms.ModelForm):
     tax_rate = forms.ChoiceField(required=False)
 
-    class Meta:
+    class Meta():
         model = ProductType
         exclude = []
         labels = {
@@ -197,6 +206,7 @@ class AttributesMixin(object):
 class ProductForm(forms.ModelForm, AttributesMixin):
     tax_rate = forms.ChoiceField(required=False)
 
+    # GULLI - edita form
     class Meta:
         model = Product
         exclude = ['attributes', 'product_type', 'updated_at']
@@ -225,6 +235,7 @@ class ProductForm(forms.ModelForm, AttributesMixin):
     collections = forms.ModelMultipleChoiceField(
         required=False, queryset=Collection.objects.all())
     description = RichTextField()
+    product_id = FlatPageForm()
 
     model_attributes_field = 'attributes'
 

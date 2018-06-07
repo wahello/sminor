@@ -54,8 +54,8 @@ DATABASES = {
         conn_max_age=600)}
 
 
-TIME_ZONE = 'America/Chicago'
-LANGUAGE_CODE = 'en'
+TIME_ZONE = 'Atlantic/Reykjavik'
+LANGUAGE_CODE = 'is'
 LANGUAGES = [
     ('is', _('Icelandic'))
 ]
@@ -175,6 +175,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.auth',
     'django.contrib.postgres',
+    'django.contrib.flatpages',
     'django.forms',
 
     # Local apps
@@ -211,7 +212,8 @@ INSTALLED_APPS = [
     'django_celery_results',
     'impersonate',
     'phonenumber_field',
-    'captcha']
+    'captcha',
+    'tinymce']
 
 if DEBUG:
     MIDDLEWARE.append(
@@ -266,8 +268,8 @@ AUTH_USER_MODEL = 'account.User'
 
 LOGIN_URL = '/account/login/'
 
-DEFAULT_COUNTRY = 'US'
-DEFAULT_CURRENCY = 'USD'
+DEFAULT_COUNTRY = 'IS'
+DEFAULT_CURRENCY = 'ISK'
 DEFAULT_DECIMAL_PLACES = get_currency_fraction(DEFAULT_CURRENCY)
 AVAILABLE_CURRENCIES = [DEFAULT_CURRENCY]
 

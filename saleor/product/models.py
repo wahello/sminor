@@ -112,6 +112,8 @@ class Product(SeoModel):
     charge_taxes = models.BooleanField(default=True)
     tax_rate = models.CharField(
         max_length=128, default=DEFAULT_TAX_RATE_NAME, blank=True)
+    # vörunúmer:
+    product_id = models.CharField(max_length=128)
 
     objects = ProductQuerySet.as_manager()
 
