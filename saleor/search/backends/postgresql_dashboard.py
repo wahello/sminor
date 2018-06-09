@@ -5,11 +5,12 @@ from ...account.models import User
 from ...order.models import Order
 from ...product.models import Product
 
-
+#LEIT
 def search_products(phrase):
     """Return matching products for dashboard views."""
     sv = (SearchVector('name', weight='A') +
-          SearchVector('description', weight='B'))
+          SearchVector('product_id', weight='B') +
+          SearchVector('description', weight='C'))
     rank = SearchRank(sv, SearchQuery(phrase))
     return Product.objects.annotate(rank=rank).filter(
         rank__gte=0.2).order_by('-rank')

@@ -115,6 +115,11 @@
       <h1 class="product__info__name">
         {{ product }}
       </h1>
+      <div class="product__id__details">
+        <p>
+          {{ product.product_id }}
+        </p>
+      </div>
       {% if user.is_staff %}
         <p>
           <a href="{% url "dashboard:product-details" pk=product.pk %}">
@@ -203,4 +208,10 @@
       </table>
     </div>
   </div>
+  <!-- vá tögg -->
+  <h2 style="margin: 2rem 0;">HELSTU ATRIÐI</h2>
+  <div class="sminortags">
+    {% include "./sminor/sminortags.html" %}
+  </div>
+
 {% endblock content %}

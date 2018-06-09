@@ -93,6 +93,10 @@ class ProductQuerySet(models.QuerySet):
             Q(available_on__lte=today) | Q(available_on__isnull=True),
             Q(is_published=True))
 
+class TagQuerySet(models.QuerySet):
+    def available(self):
+        return self
+
 
 class Product(SeoModel):
     product_type = models.ForeignKey(
@@ -114,6 +118,9 @@ class Product(SeoModel):
         max_length=128, default=DEFAULT_TAX_RATE_NAME, blank=True)
     # vörunúmer:
     product_id = models.CharField(max_length=128)
+    # tags:
+    tags = models.CharField(max_length=128)
+    tagObjects = TagQuerySet.as_manager()
 
     objects = ProductQuerySet.as_manager()
 

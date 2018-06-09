@@ -28,6 +28,11 @@
 @import "layouts/product-page";
 @import "layouts/styleguide";
 
+// sminor dót:
+@import "sminor/tafla";
+@import "sminor/tags";
+@import "sminor/productid";
+
 .scrollable-menu {
     height: auto;
     max-height: 200px;

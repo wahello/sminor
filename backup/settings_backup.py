@@ -453,7 +453,6 @@ ALLOWED_TAGS = [
     'blockquote',
     'br',
     'em',
-    'h1',
     'h2',
     'h3',
     'i',
@@ -462,14 +461,10 @@ ALLOWED_TAGS = [
     'ol',
     'p',
     'strong',
-    'ul',
-    'table',
-    'tbody',
-    'tr',
-    'td'
-    ]
+    'ul']
 ALLOWED_ATTRIBUTES = {
-    '*': ['align', 'style', 'class', 'id', 'href', 'title'],
+    '*': ['align', 'style'],
+    'a': ['href', 'title'],
     'img': ['src']}
 ALLOWED_STYLES = ['text-align']
 

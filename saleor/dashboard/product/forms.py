@@ -23,10 +23,6 @@ from ..seo.fields import SeoDescriptionField, SeoTitleField
 from ..seo.utils import prepare_seo_description
 from ..widgets import RichTextEditorWidget
 from .widgets import ImagePreviewWidget
-# HTML editor:
-from django.contrib.flatpages.models import FlatPage
-from tinymce.widgets import TinyMCE
-
 
 class RichTextField(forms.CharField):
     """A field for rich text editor, providing backend sanitization."""
@@ -47,13 +43,6 @@ class RichTextField(forms.CharField):
         value = bleach.clean(
             value, tags=tags, attributes=attributes, styles=styles)
         return value
-
-class FlatPageForm(forms.ModelForm):
-    content = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}))
-    class Meta:
-        model = FlatPage
-        exclude = []
-        fields = ['content']
 
 class ProductTypeSelectorForm(forms.Form):
     """Form that allows selecting product type."""
@@ -235,7 +224,9 @@ class ProductForm(forms.ModelForm, AttributesMixin):
     collections = forms.ModelMultipleChoiceField(
         required=False, queryset=Collection.objects.all())
     description = RichTextField()
-    product_id = FlatPageForm()
+    # mitt:
+    product_id = forms.CharField()
+    tags = forms.CharField()
 
     model_attributes_field = 'attributes'
 

@@ -16,6 +16,7 @@
                alt=""
                src="{% placeholder size=255 %}">
           <span class="product-list-item-name" title="{{ product }}">{{ product }}</span>
+          <div class="product__id__list" title="{{ product.product_id }}">{{ product.product_id }}</div>
         </div>
         <div class="panel-footer">
           {% if availability.available %}
