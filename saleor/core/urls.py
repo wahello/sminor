@@ -5,6 +5,12 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.home, name='home'),
+
+    # mitt:
+    url(r'^heimilistaeki/$', views.home, name='heimilistaeki'),
+    url(r'^raflagnadeild/$', views.home, name='raflagnadeild'),
+    #
+    
     url(r'^style-guide/', views.styleguide, name='styleguide'),
     url(r'^impersonate/(?P<uid>\d+)/', views.impersonate,
         name='impersonate-start'),

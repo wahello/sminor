@@ -33,10 +33,9 @@ non_translatable_urlpatterns = [
     url('', include('social_django.urls', namespace='social'))]
 
 translatable_urlpatterns = [
-    url(r'^', include(core_urls)),
-
     url(r'^heimilistaeki/', include(core_urls)),
     url(r'^raflagnadeild/', include(core_urls)),
+    url(r'^', include(core_urls)),
 
     url(r'^cart/', include((cart_urls, 'cart'), namespace='cart')),
     url(r'^checkout/',

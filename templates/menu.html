@@ -1,44 +1,1057 @@
 {% url 'home' as home_url %}
-<ul class="menu {% if horizontal %}nav mb-4 mb-md-0{% endif %}{% if request.get_full_path == home_url %} no-border{% endif %}">
-  {% for item in menu_items %}
-  {% with children=item.get_children %}
-    <li class="{% if horizontal %}nav-item{% endif %} {% if children %}nav-item__dropdown{% endif %} menu__item">
-      <a class="{% if horizontal %}nav-link{% endif %}" href="{{ item.get_url }}">
-        {{ item }}
+<div class="gullanavlinkar">
+  <a href="/is/">Heim</a>
+  <a href="/is/heimilistaeki">Heimilistæki</a>
+  <a href="/is/raflagnadeild">Rafbúnaður</a>
+</div>
+
+<ul class="menu nav mb-4 mb-md-0">
+
+
+  <li class="nav-item nav-item__dropdown menu__item">
+    <a class="nav-link" href="http://127.0.0.1:8000/is/products/category/heimilistaeki/thvottavelar-og-thurrkarar-20/">
+        Þvottavélar og þurrkarar
       </a>
-      {% if children %}
-        <div class="{% if horizontal %}nav-item__dropdown-content{% else %}nav-item__submenu{% endif %}">
-          <div class="container">
-            <ul>
-            {% for child in children %}
-              <li>
-                <a href="{{ child.get_url }}">
-                  {% if horizontal %}
-                    <strong>{{ child }}</strong>
-                  {% else %}
-                    {{ child }}
-                  {% endif %}
+
+    <div class="nav-item__dropdown-content">
+      <div class="container">
+        <ul>
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/thvottavelar-og-thurrkarar/thvottavelar-33/">
+
+                    <strong>Þvottavélar</strong>
+
                 </a>
-              </li>
-              {% with grandchildren=child.get_children %}
-                {% if grandchildren %}
-                <ul>
-                  {% for grandchild in grandchildren %}
-                    <li>
-                      <a href="{{ grandchild.get_url }}">
-                        {{ grandchild }}
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/thvottavelar-og-thurrkarar/thurrkarar-34/">
+
+                    <strong>Þurrkarar</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/thvottavelar-og-thurrkarar/sambyggdar-thvottavelar-og-thurrkarar-35/">
+
+                    <strong>Sambyggðar þvottavélar og þurrkarar</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/thvottavelar-og-thurrkarar/aukahlutir-fyrir-thvottavelar-og-thurrkara-36/">
+
+                    <strong>Aukahlutir fyrir þvottavélar og þurrkara</strong>
+
+                </a>
+          </li>
+
+
+
+
+        </ul>
+      </div>
+    </div>
+
+  </li>
+
+
+
+  <li class="nav-item nav-item__dropdown menu__item">
+    <a class="nav-link" href="http://127.0.0.1:8000/is/products/category/heimilistaeki/kaeli-og-frystitaeki-21/">
+        Kæli- og frystitæki
+      </a>
+
+    <div class="nav-item__dropdown-content">
+      <div class="container">
+        <ul>
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/kaeli-og-frystitaeki/kaeliskapar-37/">
+
+                    <strong>Kæliskápar</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/kaeli-og-frystitaeki/kaeli-og-frystiskapar-38/">
+
+                    <strong>Kæli- og frystiskápar</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/kaeli-og-frystitaeki/frystiskapar-39/">
+
+                    <strong>Frystiskápar</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/kaeli-og-frystitaeki/klaedanlegir-kaeli-og-frystiskapar-40/">
+
+                    <strong>Klæðanlegir kæli- og frystiskápar</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/kaeli-og-frystitaeki/ameriskir-kaeliskapar-41/">
+
+                    <strong>Amerískir kæliskápar</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/kaeli-og-frystitaeki/frystikistur-42/">
+
+                    <strong>Frystikistur</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/kaeli-og-frystitaeki/vinkaelar-43/">
+
+                    <strong>Vínkælar</strong>
+
+                </a>
+          </li>
+
+
+
+
+        </ul>
+      </div>
+    </div>
+
+  </li>
+
+
+
+  <li class="nav-item nav-item__dropdown menu__item">
+    <a class="nav-link" href="http://127.0.0.1:8000/is/products/category/heimilistaeki/eldunartaeki-22/">
+        Eldunartæki
+      </a>
+
+    <div class="nav-item__dropdown-content">
+      <div class="container">
+        <ul>
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/eldunartaeki/bakstursofnar-44/">
+
+                    <strong>Bakstursofnar</strong>
+
+                </a>
+          </li>
+
+
+          <ul>
+
+            <li>
+              <a href="http://127.0.0.1:8000/is/%3C%3C%20MISSING%20VARIABLE%20%22grandchild.get_url%22%20%3E%3E">
+                        Veggofnar
                       </a>
-                    </li>
-                  {% endfor %}
-                </ul>
-                {% endif %}
-              {% endwith %}
-            {% endfor %}
-            </ul>
-          </div>
-        </div>
-      {% endif %}
-    </li>
-  {% endwith %}
-  {% endfor %}
+            </li>
+
+            <li>
+              <a href="http://127.0.0.1:8000/is/%3C%3C%20MISSING%20VARIABLE%20%22grandchild.get_url%22%20%3E%3E">
+                        Sambyggðir örbylgju- og bakstursofnar
+                      </a>
+            </li>
+
+            <li>
+              <a href="http://127.0.0.1:8000/is/%3C%3C%20MISSING%20VARIABLE%20%22grandchild.get_url%22%20%3E%3E">
+                        Undirbyggðir bakstursofnar
+                      </a>
+            </li>
+
+            <li>
+              <a href="http://127.0.0.1:8000/is/%3C%3C%20MISSING%20VARIABLE%20%22grandchild.get_url%22%20%3E%3E">
+                        Gufusuðuofnar
+                      </a>
+            </li>
+
+            <li>
+              <a href="http://127.0.0.1:8000/is/%3C%3C%20MISSING%20VARIABLE%20%22grandchild.get_url%22%20%3E%3E">
+                        Hitaskúffur
+                      </a>
+            </li>
+
+          </ul>
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/eldunartaeki/hellubord-45/">
+
+                    <strong>Helluborð</strong>
+
+                </a>
+          </li>
+
+
+          <ul>
+
+            <li>
+              <a href="http://127.0.0.1:8000/is/%3C%3C%20MISSING%20VARIABLE%20%22grandchild.get_url%22%20%3E%3E">
+                        Spanhelluborð
+                      </a>
+            </li>
+
+            <li>
+              <a href="http://127.0.0.1:8000/is/%3C%3C%20MISSING%20VARIABLE%20%22grandchild.get_url%22%20%3E%3E">
+                        Keramíkhelluborð
+                      </a>
+            </li>
+
+            <li>
+              <a href="http://127.0.0.1:8000/is/%3C%3C%20MISSING%20VARIABLE%20%22grandchild.get_url%22%20%3E%3E">
+                        Gashelluborð
+                      </a>
+            </li>
+
+            <li>
+              <a href="http://127.0.0.1:8000/is/%3C%3C%20MISSING%20VARIABLE%20%22grandchild.get_url%22%20%3E%3E">
+                        Helluborð fyrir undirbyggða ofna
+                      </a>
+            </li>
+
+            <li>
+              <a href="http://127.0.0.1:8000/is/%3C%3C%20MISSING%20VARIABLE%20%22grandchild.get_url%22%20%3E%3E">
+                        Dómínó helluborð
+                      </a>
+            </li>
+
+            <li>
+              <a href="http://127.0.0.1:8000/is/%3C%3C%20MISSING%20VARIABLE%20%22grandchild.get_url%22%20%3E%3E">
+                        Stálhelluborð
+                      </a>
+            </li>
+
+          </ul>
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/eldunartaeki/eldavelar-46/">
+
+                    <strong>Eldavélar</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/eldunartaeki/hafar-og-gufugleypar-47/">
+
+                    <strong>Háfar og gufugleypar</strong>
+
+                </a>
+          </li>
+
+
+          <ul>
+
+            <li>
+              <a href="http://127.0.0.1:8000/is/%3C%3C%20MISSING%20VARIABLE%20%22grandchild.get_url%22%20%3E%3E">
+                        Eyjuháfar
+                      </a>
+            </li>
+
+            <li>
+              <a href="http://127.0.0.1:8000/is/%3C%3C%20MISSING%20VARIABLE%20%22grandchild.get_url%22%20%3E%3E">
+                        Gufugleypar
+                      </a>
+            </li>
+
+            <li>
+              <a href="http://127.0.0.1:8000/is/%3C%3C%20MISSING%20VARIABLE%20%22grandchild.get_url%22%20%3E%3E">
+                        Veggháfar
+                      </a>
+            </li>
+
+            <li>
+              <a href="http://127.0.0.1:8000/is/%3C%3C%20MISSING%20VARIABLE%20%22grandchild.get_url%22%20%3E%3E">
+                        Borðviftur
+                      </a>
+            </li>
+
+          </ul>
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/eldunartaeki/orbylgjuofnar-48/">
+
+                    <strong>Örbylgjuofnar</strong>
+
+                </a>
+          </li>
+
+
+
+
+        </ul>
+      </div>
+    </div>
+
+  </li>
+
+
+
+  <li class="nav-item nav-item__dropdown menu__item">
+    <a class="nav-link" href="http://127.0.0.1:8000/is/products/category/heimilistaeki/uppthvottavelar-23/">
+        Uppþvottavélar
+      </a>
+
+    <div class="nav-item__dropdown-content">
+      <div class="container">
+        <ul>
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/uppthvottavelar/hvitarstal-uppthvottavelar-64/">
+
+                    <strong>Hvítar/stál uppþvottavélar</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/uppthvottavelar/klaedanlegar-uppthvottavelar-65/">
+
+                    <strong>Klæðanlegar uppþvottavélar</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/uppthvottavelar/45-sm-uppthvottavelar-66/">
+
+                    <strong>45 sm. uppþvottavélar</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/uppthvottavelar/borduppthvottavelar-67/">
+
+                    <strong>Borðuppþvottavélar</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/uppthvottavelar/fylgihlutir-fyrir-uppthvottavelar-68/">
+
+                    <strong>Fylgihlutir fyrir uppþvottavélar</strong>
+
+                </a>
+          </li>
+
+
+
+
+        </ul>
+      </div>
+    </div>
+
+  </li>
+
+
+
+  <li class="nav-item nav-item__dropdown menu__item">
+    <a class="nav-link" href="http://127.0.0.1:8000/is/products/category/heimilistaeki/ryksugur-25/">
+        Ryksugur
+      </a>
+
+    <div class="nav-item__dropdown-content">
+      <div class="container">
+        <ul>
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/ryksugur/handryksugur-69/">
+
+                    <strong>Handryksugur</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/ryksugur/ryksugur-70/">
+
+                    <strong>Ryksugur</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/ryksugur/skaftryksugur-71/">
+
+                    <strong>Skaftryksugur</strong>
+
+                </a>
+          </li>
+
+
+
+
+        </ul>
+      </div>
+    </div>
+
+  </li>
+
+
+
+  <li class="nav-item nav-item__dropdown menu__item">
+    <a class="nav-link" href="http://127.0.0.1:8000/is/products/category/heimilistaeki/kaffivelar-og-hradsudukonnur-26/">
+        Kaffivélar og hraðsuðukönnur
+      </a>
+
+    <div class="nav-item__dropdown-content">
+      <div class="container">
+        <ul>
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/kaffivelar-og-hradsudukonnur/espresso-kaffivelar-72/">
+
+                    <strong>Espressó-kaffivélar</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/kaffivelar-og-hradsudukonnur/hradsudukonnur-73/">
+
+                    <strong>Hraðsuðukönnur</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/kaffivelar-og-hradsudukonnur/kaffikvarnir-74/">
+
+                    <strong>Kaffikvarnir</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/kaffivelar-og-hradsudukonnur/kaffivelar-75/">
+
+                    <strong>Kaffivélar</strong>
+
+                </a>
+          </li>
+
+
+
+
+        </ul>
+      </div>
+    </div>
+
+  </li>
+
+
+
+  <li class="nav-item nav-item__dropdown menu__item">
+    <a class="nav-link" href="http://127.0.0.1:8000/is/products/category/heimilistaeki/raka-og-lofthreinsitaeki-27/">
+        Raka- og lofthreinsitæki
+      </a>
+
+    <div class="nav-item__dropdown-content">
+      <div class="container">
+        <ul>
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/raka-og-lofthreinsitaeki/rakataeki-76/">
+
+                    <strong>Rakatæki</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/raka-og-lofthreinsitaeki/lofthreinsitaeki-77/">
+
+                    <strong>Lofthreinsitæki</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/raka-og-lofthreinsitaeki/ilmtaeki-78/">
+
+                    <strong>Ilmtæki</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/raka-og-lofthreinsitaeki/rakamaelar-79/">
+
+                    <strong>Rakamælar</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/raka-og-lofthreinsitaeki/thurrktaeki-80/">
+
+                    <strong>Þurrktæki</strong>
+
+                </a>
+          </li>
+
+
+
+
+        </ul>
+      </div>
+    </div>
+
+  </li>
+
+
+
+  <li class="nav-item nav-item__dropdown menu__item">
+    <a class="nav-link" href="http://127.0.0.1:8000/is/products/category/heimilistaeki/heimilislysing-28/">
+        Heimilislýsing
+      </a>
+
+    <div class="nav-item__dropdown-content">
+      <div class="container">
+        <ul>
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/heimilislysing/rymingarsala-81/">
+
+                    <strong>Rýmingarsala</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/heimilislysing/bordlampar-82/">
+
+                    <strong>Borðlampar</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/heimilislysing/golflampar-83/">
+
+                    <strong>Gólflampar</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/heimilislysing/hangandi-ljos-84/">
+
+                    <strong>Hangandi ljós</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/heimilislysing/kastarar-85/">
+
+                    <strong>Kastarar</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/heimilislysing/loftljos-86/">
+
+                    <strong>Loftljós</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/heimilislysing/veggljos-87/">
+
+                    <strong>Veggljós</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/heimilislysing/utiljos-88/">
+
+                    <strong>Útiljós</strong>
+
+                </a>
+          </li>
+
+
+
+
+        </ul>
+      </div>
+    </div>
+
+  </li>
+
+
+
+  <li class="nav-item nav-item__dropdown menu__item">
+    <a class="nav-link" href="http://127.0.0.1:8000/is/products/category/heimilistaeki/smataeki-i-eldhusid-29/">
+        Smátæki í eldhúsið
+      </a>
+
+    <div class="nav-item__dropdown-content">
+      <div class="container">
+        <ul>
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/smataeki-i-eldhusid/blandarar-89/">
+
+                    <strong>Blandarar</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/smataeki-i-eldhusid/minutu-og-samlokugrill-90/">
+
+                    <strong>Mínútu- og samlokugrill</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/smataeki-i-eldhusid/safapressur-91/">
+
+                    <strong>Safapressur</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/smataeki-i-eldhusid/tofrasprotar-92/">
+
+                    <strong>Töfrasprotar</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/smataeki-i-eldhusid/eldhusvogir-93/">
+
+                    <strong>Eldhúsvogir</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/smataeki-i-eldhusid/vofflujarn-94/">
+
+                    <strong>Vöfflujárn</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/smataeki-i-eldhusid/braudristar-95/">
+
+                    <strong>Brauðristar</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/smataeki-i-eldhusid/hraerivelar-96/">
+
+                    <strong>Hrærivélar</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/smataeki-i-eldhusid/matvinnsluvelar-97/">
+
+                    <strong>Matvinnsluvélar</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/smataeki-i-eldhusid/rafmagnshellur-98/">
+
+                    <strong>Rafmagnshellur</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/smataeki-i-eldhusid/sitronupressur-99/">
+
+                    <strong>Sítrónupressur</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/smataeki-i-eldhusid/handtheytarar-100/">
+
+                    <strong>Handþeytarar</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/smataeki-i-eldhusid/eggjasudutaeki-101/">
+
+                    <strong>Eggjasuðutæki</strong>
+
+                </a>
+          </li>
+
+
+
+
+        </ul>
+      </div>
+    </div>
+
+  </li>
+
+
+
+  <li class="nav-item nav-item__dropdown menu__item">
+    <a class="nav-link" href="http://127.0.0.1:8000/is/products/category/heimilistaeki/simabunadur-30/">
+        Símabúnaður
+      </a>
+
+    <div class="nav-item__dropdown-content">
+      <div class="container">
+        <ul>
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/simabunadur/thradlausir-simar-102/">
+
+                    <strong>Þráðlausir símar</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/simabunadur/bordsimar-103/">
+
+                    <strong>Borðsímar</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/simabunadur/aukahlutir-fyrir-simtaeki-104/">
+
+                    <strong>Aukahlutir fyrir símtæki</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/simabunadur/simstodvabunadur-105/">
+
+                    <strong>Símstöðvabúnaður</strong>
+
+                </a>
+          </li>
+
+
+          <ul>
+
+            <li>
+              <a href="http://127.0.0.1:8000/is/%3C%3C%20MISSING%20VARIABLE%20%22grandchild.get_url%22%20%3E%3E">
+                        Símstöðvar
+                      </a>
+            </li>
+
+            <li>
+              <a href="http://127.0.0.1:8000/is/%3C%3C%20MISSING%20VARIABLE%20%22grandchild.get_url%22%20%3E%3E">
+                        Borðtæki
+                      </a>
+            </li>
+
+            <li>
+              <a href="http://127.0.0.1:8000/is/%3C%3C%20MISSING%20VARIABLE%20%22grandchild.get_url%22%20%3E%3E">
+                        Hugbúnaður
+                      </a>
+            </li>
+
+          </ul>
+
+
+
+        </ul>
+      </div>
+    </div>
+
+  </li>
+
+
+
+  <li class="nav-item nav-item__dropdown menu__item">
+    <a class="nav-link" href="http://127.0.0.1:8000/is/products/category/heimilistaeki/onnur-raftaeki-31/">
+        Önnur raftæki
+      </a>
+
+    <div class="nav-item__dropdown-content">
+      <div class="container">
+        <ul>
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/onnur-raftaeki/badvogir-109/">
+
+                    <strong>Baðvogir</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/onnur-raftaeki/gufustrokjarn-110/">
+
+                    <strong>Gufustrokjárn</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/onnur-raftaeki/harblasarar-og-harvorur-111/">
+
+                    <strong>Hárblásarar og hárvörur</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/onnur-raftaeki/hitablasarar-og-viftur-112/">
+
+                    <strong>Hitablásarar og viftur</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/onnur-raftaeki/ymislegt-113/">
+
+                    <strong>Ýmislegt</strong>
+
+                </a>
+          </li>
+
+
+
+
+        </ul>
+      </div>
+    </div>
+
+  </li>
+
+
+
+  <li class="nav-item nav-item__dropdown menu__item">
+    <a class="nav-link" href="http://127.0.0.1:8000/is/products/category/heimilistaeki/pottar-og-eldhusahold-32/">
+        Pottar og eldhúsáhöld
+      </a>
+
+    <div class="nav-item__dropdown-content">
+      <div class="container">
+        <ul>
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/pottar-og-eldhusahold/pottar-og-ponnur-114/">
+
+                    <strong>Pottar og pönnur</strong>
+
+                </a>
+          </li>
+
+
+
+
+          <li>
+            <a href="http://127.0.0.1:8000/is/products/category/heimilistaeki/pottar-og-eldhusahold/eldhusahold-115/">
+
+                    <strong>Eldhúsáhöld</strong>
+
+                </a>
+          </li>
+
+
+
+
+        </ul>
+      </div>
+    </div>
+
+  </li>
+
+
+  <div class="gullatakki">
+    <div>
+    </div>
+  </div>
 </ul>

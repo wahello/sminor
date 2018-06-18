@@ -1,71 +1,303 @@
-<!-- MITT DÓT -->
 {% extends "base.html" %}
+
 {% load i18n %}
 
 {% block content %}
+{% url 'home' as home_url %}
+{% url 'heimilistaeki' as heimilis_url %}
+{% url 'raflagnadeild' as raf_url %}
+
   <div class="home">
-    <div class="row">
-      <div class="col-sm-12 home__block1">
-        <div class="home--square">
-          <div class="home--content">
-            <div class="home--content-wrapper">
-              <div class="home--content-inner">
-                <h1>{% trans "Promo & Sale" context "Homepage title" %}</h1>
-                <h2>{% trans "from the Northpole" context "Homepage title" %}</h2>
-                  <a class="btn btn-secondary home__button" href="#">
-                    {% trans "Shop now" context "Homepage action" %}
-                  </a>
+
+    {% if request.get_full_path == home_url %}
+
+      <div class="row">
+        <div class="col-sm-12 col-md-6 home__blockheimilistaeki" style="cursor: pointer;" onclick="window.location='/heimilistaeki';">
+          <div class="home--square">
+            <div class="home--content">
+              <div class="home--content-wrapper">
+                <div class="home--content-inner">
+                  <h1>{% trans "Verslun" context "Homepage title" %}</h1>
+                  <!--<a class="btn btn-secondary home__button" href="#">{% trans "Shop now" context "Homepage action" %}</a>-->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-6 home__blockraflagnadeild" style="cursor: pointer;" onclick="window.location='/raflagnadeild';">
+          <div class="home--square">
+            <div class="home--content">
+              <div class="home--content-wrapper">
+                <div class="home--content-inner">
+                  <h1>{% trans "Söludeild rafbúnaðar" context "Homepage title" %}</h1>
+                  <!--<a class="btn btn-secondary home__button" href="#">{% trans "Shop now" context "Homepage action" %}</a>-->
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+      <div class="home__featured">
+        <h2 class="text-center">{% trans "Featured products" context "Homepage title" %}</h2>
+        <div class="row">
+          {% include "product/_items.html" %}
+        </div>
+      </div>
+      <script type="application/ld+json">{{ webpage_schema|safe }}</script>
+
+    {% elif request.get_full_path == heimilis_url %}
+
+    <!-- KÓÐA-GENERATOR
+      <div class="gulli--row">
+
+        {% for child in catHeim.get_children %}
+          <div class="col-xs-12 col-sm-6 col-md-4 gulli--blockflokkar" style="cursor: pointer;" onclick="window.location='{{ child.get_absolute_url }}';">
+            <div class="gulli--square" style="background-image: url('{{ child.background_image.url }}');">
+              <div class="gulli--content">
+                <div class="gulli--content-wrapper">
+                  <div class="gulli--content-inner">
+                    <h1 class="gulli--h1">{% trans child.name context "Homepage title" %}</h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+
+      </div>
+    -->
+
+        <!-- GENERATED-KÓÐI -->
+
+        <div class="gulli--row">
 
 
-    {% for node in categories %}
-    {{ node.slug }}
-    {% endfor %}
+            <div class="col-xs-12 col-sm-6 col-md-4 gulli--blockflokkar" style="cursor: pointer;" onclick="window.location=&#39;/is/products/category/heimilistaeki/thvottavelar-og-thurrkarar-20/&#39;;">
+              <div class="gulli--square" style="background-image: url(&#39;/media/category-backgrounds/m/thvottavelarogthurrk_XBnkcxV.jpg&#39;);">
+                <div class="gulli--content">
+                  <div class="gulli--content-wrapper">
+                    <div class="gulli--content-inner">
+                      <h1 class="gulli--h1">Þvottavélar og þurrkarar</h1>
+                      <!--<a class="btn btn-secondary home__button" href="#">Shop now</a>-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-4 gulli--blockflokkar" style="cursor: pointer;" onclick="window.location=&#39;/is/products/category/heimilistaeki/kaeli-og-frystitaeki-21/&#39;;">
+              <div class="gulli--square" style="background-image: url(&#39;/media/category-backgrounds/m/kaeliogfrysti_yM0NWKW.jpg&#39;);">
+                <div class="gulli--content">
+                  <div class="gulli--content-wrapper">
+                    <div class="gulli--content-inner">
+                      <h1 class="gulli--h1">Kæli- og frystitæki</h1>
+                      <!--<a class="btn btn-secondary home__button" href="#">Shop now</a>-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-4 gulli--blockflokkar" style="cursor: pointer;" onclick="window.location=&#39;/is/products/category/heimilistaeki/eldunartaeki-22/&#39;;">
+              <div class="gulli--square" style="background-image: url(&#39;/media/category-backgrounds/m/eldurnartaeki_KYKWHVv.jpg&#39;);">
+                <div class="gulli--content">
+                  <div class="gulli--content-wrapper">
+                    <div class="gulli--content-inner">
+                      <h1 class="gulli--h1">Eldunartæki</h1>
+                      <!--<a class="btn btn-secondary home__button" href="#">Shop now</a>-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-4 gulli--blockflokkar" style="cursor: pointer;" onclick="window.location=&#39;/is/products/category/heimilistaeki/uppthvottavelar-23/&#39;;">
+              <div class="gulli--square" style="background-image: url(&#39;/media/category-backgrounds/m/uppthvottavelar_LCVUki0.jpg&#39;);">
+                <div class="gulli--content">
+                  <div class="gulli--content-wrapper">
+                    <div class="gulli--content-inner">
+                      <h1 class="gulli--h1">Uppþvottavélar</h1>
+                      <!--<a class="btn btn-secondary home__button" href="#">Shop now</a>-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-4 gulli--blockflokkar" style="cursor: pointer;" onclick="window.location=&#39;/is/products/category/heimilistaeki/ryksugur-25/&#39;;">
+              <div class="gulli--square" style="background-image: url(&#39;/media/category-backgrounds/m/ryksugur_fbtQsAb.jpg&#39;);">
+                <div class="gulli--content">
+                  <div class="gulli--content-wrapper">
+                    <div class="gulli--content-inner">
+                      <h1 class="gulli--h1">Ryksugur</h1>
+                      <!--<a class="btn btn-secondary home__button" href="#">Shop now</a>-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-4 gulli--blockflokkar" style="cursor: pointer;" onclick="window.location=&#39;/is/products/category/heimilistaeki/kaffivelar-og-hradsudukonnur-26/&#39;;">
+              <div class="gulli--square" style="background-image: url(&#39;/media/category-backgrounds/m/kaffi_kKRIQ3k.jpg&#39;);">
+                <div class="gulli--content">
+                  <div class="gulli--content-wrapper">
+                    <div class="gulli--content-inner">
+                      <h1 class="gulli--h1">Kaffivélar og hraðsuðukönnur</h1>
+                      <!--<a class="btn btn-secondary home__button" href="#">Shop now</a>-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-4 gulli--blockflokkar" style="cursor: pointer;" onclick="window.location=&#39;/is/products/category/heimilistaeki/raka-og-lofthreinsitaeki-27/&#39;;">
+              <div class="gulli--square" style="background-image: url(&#39;/media/category-backgrounds/m/raka_WP8vQWX.jpg&#39;);">
+                <div class="gulli--content">
+                  <div class="gulli--content-wrapper">
+                    <div class="gulli--content-inner">
+                      <h1 class="gulli--h1">Raka- og lofthreinsitæki</h1>
+                      <!--<a class="btn btn-secondary home__button" href="#">Shop now</a>-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-4 gulli--blockflokkar" style="cursor: pointer;" onclick="window.location=&#39;/is/products/category/heimilistaeki/heimilislysing-28/&#39;;">
+              <div class="gulli--square" style="background-image: url(&#39;/media/category-backgrounds/m/lysing_3bQb5GP.jpg&#39;);">
+                <div class="gulli--content">
+                  <div class="gulli--content-wrapper">
+                    <div class="gulli--content-inner">
+                      <h1 class="gulli--h1">Heimilislýsing</h1>
+                      <!--<a class="btn btn-secondary home__button" href="#">Shop now</a>-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-4 gulli--blockflokkar" style="cursor: pointer;" onclick="window.location=&#39;/is/products/category/heimilistaeki/smataeki-i-eldhusid-29/&#39;;">
+              <div class="gulli--square" style="background-image: url(&#39;/media/category-backgrounds/m/smataeki_oEvZuNo.jpg&#39;);">
+                <div class="gulli--content">
+                  <div class="gulli--content-wrapper">
+                    <div class="gulli--content-inner">
+                      <h1 class="gulli--h1">Smátæki í eldhúsið</h1>
+                      <!--<a class="btn btn-secondary home__button" href="#">Shop now</a>-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-4 gulli--blockflokkar" style="cursor: pointer;" onclick="window.location=&#39;/is/products/category/heimilistaeki/simabunadur-30/&#39;;">
+              <div class="gulli--square" style="background-image: url(&#39;/media/category-backgrounds/m/simar_ItF6oWK.jpg&#39;);">
+                <div class="gulli--content">
+                  <div class="gulli--content-wrapper">
+                    <div class="gulli--content-inner">
+                      <h1 class="gulli--h1">Símabúnaður</h1>
+                      <!--<a class="btn btn-secondary home__button" href="#">Shop now</a>-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-4 gulli--blockflokkar" style="cursor: pointer;" onclick="window.location=&#39;/is/products/category/heimilistaeki/onnur-raftaeki-31/&#39;;">
+              <div class="gulli--square" style="background-image: url(&#39;/media/category-backgrounds/m/onnur.jpg&#39;);">
+                <div class="gulli--content">
+                  <div class="gulli--content-wrapper">
+                    <div class="gulli--content-inner">
+                      <h1 class="gulli--h1">Önnur raftæki</h1>
+                      <!--<a class="btn btn-secondary home__button" href="#">Shop now</a>-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-4 gulli--blockflokkar" style="cursor: pointer;" onclick="window.location=&#39;/is/products/category/heimilistaeki/pottar-og-eldhusahold-32/&#39;;">
+              <div class="gulli--square" style="background-image: url(&#39;/media/category-backgrounds/m/pottar_3LdHy0K.jpg&#39;);">
+                <div class="gulli--content">
+                  <div class="gulli--content-wrapper">
+                    <div class="gulli--content-inner">
+                      <h1 class="gulli--h1">Pottar og eldhúsáhöld</h1>
+                      <!--<a class="btn btn-secondary home__button" href="#">Shop now</a>-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
 
-    {% if request.get_full_path == "/is/heimilistaeki/" %}
-      <p>HEIMILISTÆKI</p>
+        </div>
+
+
+        <!-- -->
+
+      <div class="home__featured">
+        <h2 class="text-center">{% trans "Featured products" context "Homepage title" %}</h2>
+        <div class="row">
+          {% include "product/_items.html" %}
+        </div>
+      </div>
+      <script type="application/ld+json">{{ webpage_schema|safe }}</script>
+
     {% else %}
-      <p>ANNAÐ</p>
+
+      <div class="row">
+        <div class="col-sm-12 home__block1">
+          <div class="home--square">
+            <div class="home--content">
+              <div class="home--content-wrapper">
+                <div class="home--content-inner">
+                  <h1>{% trans "Promo & Sale" context "Homepage title" %}</h1>
+                  <h2>{% trans "from the Northpole" context "Homepage title" %}</h2>
+                    <a class="btn btn-secondary home__button" href="#">
+                      {% trans "Shop now" context "Homepage action" %}
+                    </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 col-md-6 home__block2">
+          <div class="home--square">
+            <div class="home--content">
+              <div class="home--content-wrapper">
+                <div class="home--content-inner">
+                  <h1>{% trans "Size & Colours" context "Homepage title" %}</h1>
+                  <a class="btn btn-secondary home__button" href="#">{% trans "Shop now" context "Homepage action" %}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-6 home__block3">
+          <div class="home--square">
+            <div class="home--content">
+              <div class="home--content-wrapper">
+                <div class="home--content-inner">
+                  <h1>{% trans "Digital Downloads" context "Homepage title" %}</h1>
+                  <a class="btn btn-secondary home__button" href="#">{% trans "Shop now" context "Homepage action" %}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="home__featured">
+        <h2 class="text-center">{% trans "Featured products" context "Homepage title" %}</h2>
+        <div class="row">
+          {% include "product/_items.html" %}
+        </div>
+      </div>
+      <script type="application/ld+json">{{ webpage_schema|safe }}</script>
+
     {% endif %}
 
-    <div class="row">
-      <div class="col-sm-12 col-md-6 home__block2">
-        <div class="home--square">
-          <div class="home--content">
-            <div class="home--content-wrapper">
-              <div class="home--content-inner">
-                <h1>{% trans "Size & Colours" context "Homepage title" %}</h1>
-                <a class="btn btn-secondary home__button" href="#">{% trans "Shop now" context "Homepage action" %}</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-12 col-md-6 home__block3">
-        <div class="home--square">
-          <div class="home--content">
-            <div class="home--content-wrapper">
-              <div class="home--content-inner">
-                <h1>{% trans "Digital Downloads" context "Homepage title" %}</h1>
-                <a class="btn btn-secondary home__button" href="#">{% trans "Shop now" context "Homepage action" %}</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="home__featured">
-      <h2 class="text-center">{% trans "Featured products" context "Homepage title" %}</h2>
-      <div class="row">
-        {% include "product/_items.html" %}
-      </div>
-    </div>
-    <script type="application/ld+json">{{ webpage_schema|safe }}</script>
   </div>
+
 {% endblock %}

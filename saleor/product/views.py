@@ -68,7 +68,14 @@ def product_details(request, slug, product_id, form=None):
     # show_variant_picker determines if variant picker is used or select input
     show_variant_picker = all([v.attributes for v in product.variants.all()])
     json_ld_data = product_json_ld(product, product_attributes)
+
+    #mitt:
+    variants = product.variants.all()
+
     ctx = {
+        # mitt:
+        'variants': variants,
+        
         'is_visible': is_visible,
         'form': form,
         'availability': availability,
@@ -126,7 +133,6 @@ def category_index(request, path, category_id):
     ctx = get_product_list_context(request, product_filter)
     ctx.update({'object': category})
     return TemplateResponse(request, 'category/index.html', ctx)
-
 
 def collection_index(request, slug, pk):
     collections = collections_visible_to_user(request.user)

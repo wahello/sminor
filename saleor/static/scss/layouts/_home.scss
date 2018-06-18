@@ -1,9 +1,81 @@
+/*.container {
+  max-width: 100%;
+  width: 100%;
+}*/
+
+.gulli {
+  &--row {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    @include media-breakpoint-down(xs) {
+      flex-direction: column;
+    }
+  }
+
+  &--blockflokkar {
+    height: 170px;
+    padding: 5px;
+    transition: 0.3s ease-in-out;
+    -webkit-filter: contrast(80%);
+    &:hover {
+    -webkit-filter: contrast(100%);
+    }
+  }
+
+  &--h1 {
+    width:100%;
+    font-size: 1.2rem!important;
+    width: 100%;
+    @include media-breakpoint-down(md) {
+      font-size: 1.2rem!important;
+    }
+    @include media-breakpoint-down(xs) {
+      font-size: 2rem!important;
+    }
+  }
+
+  &--content-wrapper {
+    display: table;
+    width: 100%;
+    height: 100%;
+  }
+  &--content-inner {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+    padding-left: $global-padding / 2;
+    padding-right: $global-padding / 2;
+    width:100%;
+  }
+  &--content {
+    width:100%;
+    height: 100%;
+  }
+  &--square {
+    width:100%;
+    height: 100%;
+    background-size: cover;
+  }
+}
+
 .home {
+
+  & .row {
+    display: flex;
+    height: 100%;
+  }
+
+  width: 100%;
   text-align: center;
-  color: $white;
+  color: $light-gray;
   h1 {
-    font-weight: 300;
+    background-color: rgba(90, 90, 90, 0.4);
+    font-weight: 500;
     text-transform: uppercase;
+    text-shadow: -0.5px 0 gray, 0 0.5px gray, 0.5px 0 gray, 0 -0.5px gray;
     @include media-breakpoint-down(sm) {
       font-size: 2.5rem;
     }
@@ -11,20 +83,23 @@
   .btn {
     margin-top: $global-margin;
   }
+
   &--content-wrapper {
      display: table;
      width: 100%;
      height: 100%;
   }
   &--content-inner {
+      height: 100%;
       display: table-cell;
       text-align: center;
       vertical-align: middle;
       color: white;
-      padding-left: $global-padding;
-      padding-right: $global-padding;
+      padding-left: $global-padding / 2;
+      padding-right: $global-padding / 2;
   }
   &--content {
+    height: 100%;
     position:  absolute;
     top: 0;
     left: 0;
@@ -32,13 +107,9 @@
     right: 0;
   }
   &--square {
+    height: 100%;
     background-size: cover;
     position: relative;
-    &:before {
-      content: "";
-      display: block;
-      padding-top: 100%;
-    }
   }
   &__block1 {
     .home--square {
@@ -62,6 +133,47 @@
       background-image: url('../images/block3.jpg');
     }
   }
+  &__blockheimilistaeki {
+    padding: 5px!important;
+    height: 400px;
+    @include media-breakpoint-down(sm) {
+      margin-top: -1%;
+      margin-bottom: -25%;
+    }
+    .home--square {
+      background-image: url('../images/block_heimilistaeki.jpg');
+      -webkit-filter: contrast(80%);
+      transition: 0.3s ease-in-out;
+      &:hover {
+        -webkit-filter: contrast(100%);
+      }
+    }
+  }
+  &__blockraflagnadeild {
+    padding: 5px!important;
+    height: 400px;
+    .home--square {
+      background-image: url('../images/block_raflagnadeild.jpg');
+      -webkit-filter: contrast(80%);
+      transition: 0.3s ease-in-out;
+      &:hover {
+        -webkit-filter: contrast(100%);
+      }
+    }
+  }
+
+  &__blockflokkar {
+    padding: 5px!important;
+    .home--square {
+      height: 80%;
+      -webkit-filter: contrast(80%);
+      transition: 0.3s ease-in-out;
+      &:hover {
+        -webkit-filter: contrast(100%);
+      }
+    }
+  }
+
   &__featured {
     color: $body-color;
     h2 {

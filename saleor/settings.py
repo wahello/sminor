@@ -29,6 +29,7 @@ DEBUG = get_bool_from_env('DEBUG', True)
 SITE_ID = 1
 
 PROJECT_ROOT = os.path.normpath(os.path.join(os.path.dirname(__file__), '..'))
+#PROJECT_ROOT = '/is'
 
 ROOT_URLCONF = 'saleor.urls'
 
@@ -120,7 +121,9 @@ context_processors = [
     'saleor.core.context_processors.search_enabled',
     'saleor.site.context_processors.site',
     'social_django.context_processors.backends',
-    'social_django.context_processors.login_redirect']
+    'social_django.context_processors.login_redirect',
+    # catHeim og catRaf:
+    "saleor.product.context_processors.categories_processor"]
 
 loaders = [
     'django.template.loaders.filesystem.Loader',

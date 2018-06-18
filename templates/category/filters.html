@@ -1,13 +1,28 @@
 {% extends "product/_filters.html" %}
 
 {% block title_tree %}
+  <!-- breytti Category í get_root -->
   {% with children=category.get_children %}
     {% if children %}
       <div class="product-filters__categories">
-        <ul class="product-filters__categories__childs no-parent">
+        <ul class="product-filters__categories__childs no-parent gullafilters__ul">
           {% for child in children %}
-            <li>
+            <li class="gullafilters__li gullafilters__li__fyrsta">
               <a href="{{ child.get_absolute_url }}">{{ child.name }}</a>
+
+            <!-- gulli
+            {% with subchildren=child.get_children %}
+              {% if subchildren %}
+                <ul class="gullafilters__ul gullafilters__ul__seinna">
+                  {% for subchild in subchildren %}
+                    <li class="gullafilters__li">
+                      <a href="{{ subchild.get_absolute_url }}">{{ subchild.name }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            {% endwith %}
+          -->
             </li>
           {% endfor %}
         </ul>

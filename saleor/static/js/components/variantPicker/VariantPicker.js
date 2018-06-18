@@ -29,8 +29,11 @@ export default observer(class VariantPicker extends Component {
       Object.keys(params)
         .some((name) => {
           const valueName = params[name];
+          //console.log(valueName);
           const attribute = this.matchAttributeBySlug(name);
+          //console.log(attribute);
           const value = this.matchAttributeValueByName(attribute, valueName);
+          //console.log(value);
           if (attribute && value) {
             selection[attribute.pk] = value.pk.toString();
           } else {
@@ -87,6 +90,8 @@ export default observer(class VariantPicker extends Component {
         .forEach(attrId => {
           const attribute = this.matchAttribute(attrId);
           const value = this.matchAttributeValue(attribute, this.state.selection[attrId]);
+          console.log(attribute);
+          console.log(value);
           if (attribute && value) {
             params[attribute.slug] = value.slug;
           }

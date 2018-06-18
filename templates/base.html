@@ -6,9 +6,23 @@
 {% load placeholder %}
 {% load translate_url from urls %}
 
+{% url 'home' as home_url %}
+{% url 'heimilistaeki' as heimilis_url %}
+{% url 'raflagnadeild' as raf_url %}
+
 <html lang="{{ LANGUAGE_CODE }}" class="no-js" data-shipping-options-url="{% url 'cart:shipping-options' %}" data-cart-summary-url="{% url 'cart:summary' %}">
 <head>
-  <title>{% block title %}{{ site.name }}{% endblock %}</title>
+  <title>{% block title %}
+
+    {% if request.get_full_path == heimilis_url %}
+      Heimilistæki-Smith og Norland
+    {% elif request.get_full_path == raf_url %}
+      Söludeild rafbúnaðar-Smith og Norland
+    {% else %}
+      {{ site.name }}
+    {% endif %}
+
+  {% endblock %}</title>
   {% block meta %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -60,13 +74,13 @@
               {% if user.is_staff or request.impersonator.is_staff %}
                 <li>
                   <a href="{% url "dashboard:index" %}" target="_blank" rel="noopener">
-                    {% trans "Dashboard" context "Main navigation item" %}
+                    {% trans "Stjórnborð" context "Main navigation item" %}
                   </a>
                 </li>
               {% endif %}
               <li>
                 <a href="{% url "account:details" %}">
-                  {% trans "Your account" context "Main navigation item" %}</a>
+                  {% trans "Aðgangurinn minn" context "Main navigation item" %}</a>
               </li>
               {% if user.is_impersonate %}
                 <li>
@@ -77,17 +91,17 @@
               {% else %}
                 <li>
                   <a href="{% url "account:logout" %}">
-                    {% trans "Log out" context "Main navigation item" %}</a>
+                    {% trans "Útskrá" context "Main navigation item" %}</a>
                 </li>
               {% endif %}
             {% else %}
               <li>
                 <a rel="nofollow" href="{% url "account:signup" %}">
-                  {% trans "Register" context "Main navigation item" %}</a>
+                  {% trans "Stofna aðgang" context "Main navigation item" %}</a>
               </li>
               <li>
                 <a rel="nofollow" href="{% url "account:login" %}">
-                  {% trans "Log in" context "Main navigation item" %}
+                  {% trans "Innskrá" context "Main navigation item" %}
                 </a>
               </li>
             {% endif %}
@@ -96,6 +110,7 @@
       </div>
     </div>
     </div>
+
     <div class="navbar__brand container-fluid d-block">
       <div class="container">
         <div class="row no-gutters">
@@ -105,7 +120,7 @@
               <span>{% trans "menu" context "Hamburger button text" %}</span>
             </div>
             <a href="{% url 'home' %}">
-              <svg data-src="{% static "images/logo.svg" %}" height="38px" width="176px"/>
+              <svg data-src="{% static "images/logo_sminor.svg" %}" height="38px" width="176px"/>
             </a>
           </div>
           <div class="col-2 col-md-4 navbar__search static">
@@ -119,7 +134,7 @@
                 </div>
                 <input class="form-control" type="text" name="q"
                        value="{% if query %}{{ query }}{% endif %}"
-                       placeholder="{% trans "Search for product" %}"
+                       placeholder="{% trans "Leit" %}"
                        required>
                 <button class="btn btn-link" type="submit">
                   <svg data-src="{% static "images/search.svg" %}" width="30" height="30"/>
@@ -131,7 +146,7 @@
             <div class="navbar__brand__cart float-right">
               <a rel="nofollow" class="cart__icon" href="{% url "cart:index" %}">
                 <span class="cart-label d-none d-md-inline-block">
-                  {% trans "Your Cart" context "Main navigation item" %}
+                  {% trans "Karfan mín" context "Main navigation item" %}
                 </span>
                 <div class="navbar__brand__cart__icon">
                   <svg data-src="{% static "images/cart.svg" %}" width="35" height="30"/>
@@ -152,11 +167,19 @@
         </div>
       </div>
     </div>
+
+
+
+    {% if request.get_full_path != home_url %}
     <div class="navbar__menu container d-block">
       <nav class="navigation">
-        {% menu site_menu=site.settings.top_menu horizontal=True %}
+        {% menu template_name="menu.html" site_menu=site.settings.top_menu horizontal=True %}
       </nav>
     </div>
+    {% endif %}
+
+
+
   </header>
 {% endblock %}
 <div class="container maincontent">
@@ -180,24 +203,24 @@
       <div class="row">
         <div class="col-md-3">
           <a href="{% url 'home' %}" class="footer__logo">
-            <svg data-src="{% static "images/logo.svg" %}" height="38px" width="176px"/>
+            <svg data-src="{% static "images/logo_sminor.svg" %}" height="38px" width="176px"/>
           </a>
         </div>
         <div class="col-md-3 col-sm-6">
-          {% menu site_menu=site.settings.bottom_menu %}
+          {% menu template_name="footer.html" site_menu=site.settings.bottom_menu %}
         </div>
         <div class="col-md-3 col-sm-6">
           <ul>
             <li>
               <a rel="nofollow" href="{% url "cart:index" %}">
-                {% trans "Your Cart" context "Main navigation item" %}
+                {% trans "Karfan mín" context "Main navigation item" %}
               </a>
             </li>
             {% if user.is_authenticated %}
               {% if user.is_staff %}
                 <li>
                   <a href="{% url "dashboard:index" %}" target="_blank" rel="noopener">
-                    {% trans "Dashboard" context "Main navigation item" %}
+                    {% trans "Stjórnborð" context "Main navigation item" %}
                   </a>
                 </li>
                 <li>
@@ -208,7 +231,7 @@
               {% endif %}
               <li>
                 <a href="{% url "account:details" %}">
-                  {% trans "Your account" context "Main navigation item" %}
+                  {% trans "Aðgangurinn minn" context "Main navigation item" %}
                 </a>
               </li>
               {% if user.is_impersonate %}
@@ -220,23 +243,24 @@
               {% else %}
                 <li>
                   <a href="{% url "account:logout" %}">
-                    {% trans "Log out" context "Main navigation item" %}</a>
+                    {% trans "Útskrá" context "Main navigation item" %}</a>
                 </li>
               {% endif %}
             {% else %}
               <li>
                 <a rel="nofollow" href="{% url "account:signup" %}">
-                  {% trans "Register" context "Main navigation item" %}
+                  {% trans "Stofna aðgang" context "Main navigation item" %}
                 </a>
               </li>
               <li>
                 <a rel="nofollow" href="{% url "account:login" %}">
-                  {% trans "Log in" context "Main navigation item" %}
+                  {% trans "Innskrá" context "Main navigation item" %}
                 </a>
               </li>
             {% endif %}
           </ul>
         </div>
+        <!-- SOCIAL MEDIA ICONS
         <div class="col-md-3 col-sm-12">
           <a target="_blank" rel="noopener" class="social-footer" href="https://www.facebook.com/mirumeelabs/">
             <svg data-src="{% static "images/facebook-logo.svg" %}" width="45px" height="45px"/>
@@ -262,7 +286,7 @@
           <a target="_blank" rel="noopener" class="social-footer" href="https://www.instagram.com/explore/tags/mirumee/">
             <svg data-src="{% static "images/instagram-logo.svg" %}" width="45px" height="45px"/>
           </a>
-        </div>
+        </div> -->
       </div>
     </div>
   </footer>

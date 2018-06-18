@@ -4,6 +4,9 @@ const $searchIcon = $('.mobile-search-icon');
 const $closeSearchIcon = $('.mobile-close-search');
 const $searchForm = $('.search-form');
 
+const $gullatakki = $('.gullatakki');
+const $body = $('body');
+
 const renderNavbar = () => {
   const $desktopLinkBar = $('.navbar__login');
   const $mobileLinkBar = $('.navbar__menu__login');
@@ -55,3 +58,11 @@ $searchIcon
   .on('click', () => $searchForm.removeClass('search-form--hidden'));
 $closeSearchIcon
   .on('click', () => $searchForm.addClass('search-form--hidden'));
+// MITT
+$gullatakki
+  .on('click', (e) => {
+    $mobileNav.toggleClass('gullaopen');
+    $gullatakki.toggleClass('gullaopen');
+    $body.toggleClass('gullaopen');
+    e.stopPropagation();
+  });
