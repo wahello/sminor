@@ -208,10 +208,16 @@
       </table>
     </div>
   </div>
-  <!-- vá tögg -->
+  <!-- GREINAR -->
   <h2 style="margin: 2rem 0;">HELSTU ATRIÐI</h2>
-  <div class="sminortags">
-    {% include "./sminor/sminortags.html" %}
+  <div class="sminorgreinar">
+    {% for p in product.Greinar.all %}
+      <div class="sminorgreinar__grein">
+        <div class="sminorgreinar__grein__content">
+          {{ p.content|safe }}
+        </div>
+      </div>
+    {% endfor %}
   </div>
 
 {% endblock content %}

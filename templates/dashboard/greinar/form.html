@@ -1,0 +1,91 @@
+{% extends "dashboard/base.html" %}
+{% load i18n %}
+{% load materializecss %}
+{% load staticfiles %}
+
+{% block title %}
+  {% if greinar.pk %}
+    {% trans "Edit" context "greinar form greinar title" %} - {{ greinar }}
+  {% else %}
+    {% trans "Add new greinar" context "greinar form greinar title" %}
+  {% endif %}
+    {{ block.super }}
+{% endblock %}
+
+{% block body_class %}body-greinar{% endblock %}
+
+{% block header_menu %}
+  {% url "dashboard:greinar-list" as url %}
+  {% include "dashboard/includes/_back-link.html" with url=url %}
+{% endblock %}
+
+{% block breadcrumbs %}
+  <ul class="breadcrumbs breadcrumbs--history">
+    <li>
+       <a href="{% url 'dashboard:greinar-list' %}" class="breadcrumb">
+         {% trans "greinars" context "Dashboard greinars list" %}
+       </a>
+    </li>
+    <li class="back-mobile">
+      <a href="{% url 'dashboard:greinar-list' %}">
+        <svg data-src="{% static 'dashboard/images/arrow-left.svg' %}" fill="#fff" width="20px" height="20px" />
+      </a>
+    </li>
+    <li>
+      {% if greinar.pk %}
+        <a href="{% url 'dashboard:greinar-details' pk=greinar.pk %}" class="breadcrumbs--ellipsed-item">
+          {{ greinar }}
+        </a>
+      {% else %}
+        <span class="breadcrumbs--ellipsed-item">
+          {% trans "Add new greinar" context "greinar form breadcrumbs" %}
+        </span>
+      {% endif %}
+    </li>
+    {% if greinar.pk %}
+      <li>
+        <span class="breadcrumbs--ellipsed-item">
+          {% trans "Edit" context "greinar form breadcrumbs" %}
+        </span>
+      </li>
+   {% endif %}
+  </ul>
+{% endblock %}
+
+{% block menu_greinars_class %}active{% endblock %}
+
+{% block content %}
+  <form method="post" class="card">
+    {% csrf_token %}
+    <div class="row">
+      <div class="card-content">
+        <div class="col s12 l8">
+          <div class="row">
+            {{ form.title|materializecss }}
+          </div>
+          <div class="row">
+            {{ form.content }}
+            {{ form.media }}
+          </div>
+          {% include "dashboard/includes/_google_preview.html" with object=greinar form=form %}
+        </div>
+        <div class="col s12 l4">
+          {{ form.slug|materializecss }}
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <div class="card-action right-align">
+        {% if greinar.pk %}
+          <a href="{% url 'dashboard:greinar-list' %}" class="btn-flat">{% trans "Cancel" %}</a>
+          <button type="submit" class="btn">{% trans "Save" %}</button>
+        {% else %}
+          <a href="{% url 'dashboard:greinar-list' %}" class="btn-flat">{% trans "Cancel" %}</a>
+          <button type="submit" class="btn submit-stay">{% trans "Create" %}</button>
+        {% endif %}
+        </div>
+      </div>
+    </div>
+  </form>
+{% endblock %}

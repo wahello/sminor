@@ -1,4 +1,4 @@
-from django.urls import reverse
+afrom django.urls import reverse
 
 from saleor.dashboard.page.forms import PageForm
 from django.forms.models import model_to_dict

@@ -101,7 +101,8 @@ STATICFILES_DIRS = [
     ('assets', os.path.join(PROJECT_ROOT, 'saleor', 'static', 'assets')),
     ('favicons', os.path.join(PROJECT_ROOT, 'saleor', 'static', 'favicons')),
     ('images', os.path.join(PROJECT_ROOT, 'saleor', 'static', 'images')),
-    ('dashboard', os.path.join(PROJECT_ROOT, 'saleor', 'static', 'dashboard'))]
+    ('dashboard', os.path.join(PROJECT_ROOT, 'saleor', 'static', 'dashboard')),
+    ('sminorcss', os.path.join(PROJECT_ROOT, 'saleor', 'static', 'sminorcss'))]
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder']
@@ -197,6 +198,7 @@ INSTALLED_APPS = [
     'saleor.site',
     'saleor.data_feeds',
     'saleor.page',
+    'saleor.greinar',
 
     # External apps
     'versatileimagefield',
@@ -216,7 +218,13 @@ INSTALLED_APPS = [
     'impersonate',
     'phonenumber_field',
     'captcha',
-    'tinymce']
+    #html editor dót
+    #'tinymce',
+    #'django_wysiwyg',
+    'ckeditor',
+    'ckeditor_uploader']
+
+DJANGO_WYSIWYG_FLAVOR = "ckeditor"
 
 if DEBUG:
     MIDDLEWARE.append(
@@ -490,3 +498,20 @@ NOCAPTCHA = True
 # Set Google's reCaptcha keys
 RECAPTCHA_PUBLIC_KEY = os.environ.get('RECAPTCHA_PUBLIC_KEY')
 RECAPTCHA_PRIVATE_KEY = os.environ.get('RECAPTCHA_PRIVATE_KEY')
+
+####################################
+    ##  CKEDITOR CONFIGURATION ##
+####################################
+
+CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'
+
+CKEDITOR_UPLOAD_PATH = 'static/ckeditor/uploads/'
+CKEDITOR_IMAGE_BACKEND = "pillow"
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': None,
+    },
+}
+
+###################################

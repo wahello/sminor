@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load materializecss %}
+{% load build_absolute_uri from urls %}
+
+{% block title %}
+  {% if greinar.seo_title %}
+    {{ greinar.seo_title }}
+  {% else %}
+    {{ greinar.title }} - {{ block.super }}
+  {% endif %}
+{% endblock %}
+
+{% block meta_tags %}
+  <meta property="og:title" content="{{ greinar.seo_title|default:greinar.title }}">
+  <meta property="og:description" content="{{ greinar.seo_description|default:"" }}">
+  <meta name="description" content="{{ greinar.seo_description|default:"" }}">
+
+  {% build_absolute_uri request=request location=greinar.get_absolute_url as greinar_url %}
+  <meta property="og:url" content="{{ greinar_url }}">
+{% endblock meta_tags %}
+
+{% block breadcrumb %}
+  <ul class="breadcrumbs list-unstyled">
+    <li>
+      <a href="{% url 'home' %}">
+        {% trans "Home" context "Main navigation item" %}
+      </a>
+    </li>
+    {% if greinar %}
+      <li>
+        <a href="{{ greinar.get_absolute_url }}">{{ greinar.title }}</a>
+      </li>
+    {% endif %}
+  </ul>
+{% endblock breadcrumb %}
+
+{% block content %}
+  {% if not greinar.is_visible %}
+    <div class="alert alert-warning" role="alert">
+      {% blocktrans context "Unavailable greinar detail text" %}
+        <strong>Warning!</strong>
+        You are previewing a greinar that is not visible.
+      {% endblocktrans %}
+    </div>
+  {% elif not is_visible %}
+    <div class="alert alert-warning" role="alert">
+      {% blocktrans trimmed with date=greinar.available_on|date context "Unpublished greinar details text" %}
+        <strong>Warning!</strong>
+        You are previewing a greinar that will become visible on <strong>{{ date }}</strong>.
+      {% endblocktrans %}
+    </div>
+  {% endif %}
+  <div class="">
+    {{ greinar.content|safe }}
+  </div>
+{% endblock %}

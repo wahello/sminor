@@ -24,6 +24,9 @@ from ..core.utils.taxes import DEFAULT_TAX_RATE_NAME, apply_tax_to_price
 from ..discount.utils import calculate_discounted_price
 from ..seo.models import SeoModel
 
+#
+from ..greinar.models import greinar as greinarTest
+
 
 class Category(MPTTModel, SeoModel):
     name = models.CharField(max_length=128)
@@ -121,6 +124,10 @@ class Product(SeoModel):
     # tags:
     tags = models.CharField(max_length=128)
     tagObjects = TagQuerySet.as_manager()
+    # vá
+    #Greinar = models.ForeignKey(greinarTest, related_name='greinar', on_delete=models.CASCADE)
+    Greinar = models.ManyToManyField(
+            greinarTest, blank=True, related_name='greinar')
 
     objects = ProductQuerySet.as_manager()
 
@@ -293,7 +300,7 @@ class AttributeChoiceValue(SortableModel):
 
     def get_ordering_queryset(self):
         return self.attribute.values.all()
-
+        
 
 class ProductImage(SortableModel):
     product = models.ForeignKey(

@@ -20,6 +20,9 @@ from .page.urls import urlpatterns as page_urls
 from .product.urls import urlpatterns as product_urls
 from .search.urls import urlpatterns as search_urls
 
+#
+from .greinar.urls import urlpatterns as greinar_urls
+
 handler404 = 'saleor.core.views.handle_404'
 
 non_translatable_urlpatterns = [
@@ -47,8 +50,9 @@ translatable_urlpatterns = [
     url(r'^heimilistaeki/page/', include((page_urls, 'page'), namespace='page')),
     url(r'^raflagnadeild/page/', include((page_urls, 'page'), namespace='page')),
 
-    url(r'^products/',
-        include((product_urls, 'product'), namespace='product')),
+    url(r'^greinar/', include((greinar_urls, 'greinar'), namespace='greinar')),
+
+    url(r'^products/', include((product_urls, 'product'), namespace='product')),
 
     url(r'^heimilistaeki/products/',
         include((product_urls, 'product'), namespace='product')),
@@ -60,7 +64,9 @@ translatable_urlpatterns = [
     url(r'^feeds/',
         include((feed_urls, 'data_feeds'), namespace='data_feeds')),
     url(r'^search/', include((search_urls, 'search'), namespace='search')),
-    url(r'', include('payments.urls'))]
+    url(r'', include('payments.urls')),
+    #
+    url(r'^ckeditor/', include('ckeditor_uploader.urls'))]
 
 urlpatterns = non_translatable_urlpatterns + i18n_patterns(
     *translatable_urlpatterns)

@@ -24,6 +24,8 @@ from ..seo.utils import prepare_seo_description
 from ..widgets import RichTextEditorWidget
 from .widgets import ImagePreviewWidget
 
+from ...greinar.models import greinar
+
 class RichTextField(forms.CharField):
     """A field for rich text editor, providing backend sanitization."""
 
@@ -228,6 +230,10 @@ class ProductForm(forms.ModelForm, AttributesMixin):
     product_id = forms.CharField()
     tags = forms.CharField()
 
+    Greinar = forms.ModelMultipleChoiceField(
+        required=False, queryset=greinar.objects.all())
+    #Greinar = greinar.objects.all()
+
     model_attributes_field = 'attributes'
 
     def __init__(self, *args, **kwargs):
@@ -239,6 +245,8 @@ class ProductForm(forms.ModelForm, AttributesMixin):
         self.prepare_fields_for_attributes()
         self.fields['collections'].initial = Collection.objects.filter(
             products__name=self.instance)
+        self.fields['Greinar'].initial = greinar.objects.filter(
+            greinar__name=self.instance)
         self.fields['seo_description'] = SeoDescriptionField(
             extra_attrs={
                 'data-bind': self['description'].auto_id,

@@ -1,0 +1,19 @@
+.sminorgreinar {
+  display: table;
+  width: 100%;
+  padding-top: 25px;
+  border-collapse: collapse;
+
+  &__grein {
+    display: table-row;
+    width: 100%;
+    border-width: 1px 0;
+    border-style: solid;
+    border-color: grey;
+
+    &__content {
+      width: 100%;
+      padding: 20px;
+    }
+  }
+}

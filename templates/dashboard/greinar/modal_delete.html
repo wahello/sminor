@@ -1,0 +1,27 @@
+{% extends "dashboard/base_modal.html" %}
+
+{% load i18n %}
+
+{% block form_class %}{% endblock %}
+
+{% block action_url %}
+{% url 'dashboard:greinar-delete' pk=greinar.pk %}
+{% endblock %}
+
+{% block title %}
+{% blocktrans trimmed context "Modal remove greinar text" %}
+  Remove greinar {{ greinar }}
+{% endblocktrans %}
+{% endblock %}
+
+{% block content %}
+  <div class="col s12">
+    {% blocktrans trimmed context "Modal remove greinar text" %}
+      Are you sure you want to remove greinar <strong>{{ greinar }}</strong>?
+    {% endblocktrans %}
+  </div>
+{% endblock content %}
+
+{% block primary_action %}
+{% trans "Remove" context "Dashboard delete action" %}
+{% endblock %}

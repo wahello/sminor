@@ -258,6 +258,17 @@
                       </a>
                     </li>
                   {% endif %}
+
+                  <!-- GREINAR -->
+                  {% if perms.greinar.view_page %}
+                    <li class="{% block menu_greinar_class %}{% endblock %}">
+                      <a href="{% url 'dashboard:greinar-list' %}">
+                        {% trans "Greinar" context "Dashboard static greinar" %}
+                      </a>
+                    </li>
+                  {% endif %}
+                  <!-- -->
+
                 </ul>
               </li>
               <li class="side-nav-section" id="version-indicator">
