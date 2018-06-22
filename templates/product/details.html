@@ -64,6 +64,7 @@
       {% endblocktrans %}
     </div>
   {% endif %}
+  {{ product.variants.all }}
   <div class="row product">
     <script type="application/ld+json">{{ json_ld_product_data|safe }}</script>
     <div class="col-md-6 col-12 product__gallery">
@@ -214,7 +215,20 @@
     {% for p in product.Greinar.all %}
       <div class="sminorgreinar__grein">
         <div class="sminorgreinar__grein__content">
-          {{ p.content|safe }}
+
+          <h2><strong>{{ p.titletext }}</strong></h2>
+
+          <div class="sminorgreinar__grein__content__inner">
+            {% if p.image_size == "lítil" %}
+              <img src="{{ p.image.url }}" id="litilmynd">
+            {% elif p.image_size == "stór" %}
+              <img src="{{ p.image.url }}" id="stormynd">
+            {% endif %}
+            <div class="sminorgreinar__grein__content__inner__texti">
+              {{ p.content|safe }}
+            </div>
+          </div>
+
         </div>
       </div>
     {% endfor %}

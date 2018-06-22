@@ -1,9 +1,14 @@
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.decorators import permission_required
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect, render
 from django.template.response import TemplateResponse
 from django.utils.translation import pgettext_lazy
+from django.http import HttpResponseRedirect
+
+from django.views.decorators.http import require_POST
+
+from . import forms
 
 from ...core.utils import get_paginator_items
 from ...greinar.models import greinar
@@ -39,9 +44,9 @@ def greinar_add(request):
     Greinar = greinar()
     return _greinar_edit(request, Greinar)
 
-
+# BÆTTI VIÐ REQUEST FILES FYRIR UPLOAD
 def _greinar_edit(request, greinar):
-    form = greinarForm(request.POST or None, instance=greinar)
+    form = greinarForm(request.POST or None, request.FILES or None, instance=greinar)
     if form.is_valid():
         form.save()
         msg = pgettext_lazy('Dashboard message', 'Saved greinar')

@@ -7,6 +7,7 @@ from ..seo.fields import SeoDescriptionField, SeoTitleField
 from ..seo.utils import prepare_seo_description
 
 from ckeditor.widgets import CKEditorWidget
+from versatileimagefield.fields import PPOIField, VersatileImageField
 
 
 class greinarForm(forms.ModelForm):
@@ -22,6 +23,7 @@ class greinarForm(forms.ModelForm):
 
     class Meta:
         model = greinar
+        #fields = ('title', 'content', 'image', )
         exclude = []
         widgets = {
             'slug': forms.TextInput(attrs={'placeholder': 'example-slug'})},
@@ -32,12 +34,14 @@ class greinarForm(forms.ModelForm):
                 'Slug is being used to create greinar URL')}
 
     #content = RichTextField()
-    content = forms.CharField(widget=CKEditorWidget())
+    #title = forms.CharField()
+    #content = forms.CharField(widget=CKEditorWidget())
+    #image = forms.FileField()
 
     def clean_slug(self):
         # Make sure slug is not being written to database with uppercase.
         slug = self.cleaned_data.get('slug')
-        slug = slug.lower()
+        #slug = slug.lower()
         return slug
 
     def clean_seo_description(self):

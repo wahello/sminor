@@ -1,7 +1,7 @@
 .sminorgreinar {
   display: table;
   width: 100%;
-  padding-top: 25px;
+  padding-top: 5px;
   border-collapse: collapse;
 
   &__grein {
@@ -13,7 +13,34 @@
 
     &__content {
       width: 100%;
-      padding: 20px;
+      padding: 50px;
+
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 25px;
+      }
+
+      &__inner {
+        display: flex;
+        width: 100%;
+
+        #litilmynd {
+          width: 15%;
+          height: 15%;
+        }
+
+        #stormynd {
+          width: 30%;
+          height: 30%;
+        }
+
+        div {
+          padding: 0 50px;
+          width: 70%;
+        }
+
+      }
+
     }
   }
 }

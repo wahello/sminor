@@ -11,12 +11,12 @@ $(document).ready(function() {
       var e = $(this);
       var litur = e.text();
 ////////////////////////////////////////////////////////////////
-      if (litur == 'Gulur') {
+    /*  if (litur == 'Gulur') {
         e.attr("style", "background: yellow;");
       }
       else if (litur == 'Rauður') {
         e.attr("style", "background: red;")
-      }
+      }*/
 //////////////////////////////////////////////////////////////
     });
 

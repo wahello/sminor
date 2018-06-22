@@ -24,6 +24,9 @@ from ..core.utils.taxes import DEFAULT_TAX_RATE_NAME, apply_tax_to_price
 from ..discount.utils import calculate_discounted_price
 from ..seo.models import SeoModel
 
+from ckeditor_uploader.fields import RichTextUploadingField
+
+
 #
 from ..greinar.models import greinar as greinarTest
 
@@ -105,7 +108,7 @@ class Product(SeoModel):
     product_type = models.ForeignKey(
         ProductType, related_name='products', on_delete=models.CASCADE)
     name = models.CharField(max_length=128)
-    description = models.TextField()
+    description = RichTextUploadingField()
     category = models.ForeignKey(
         Category, related_name='products', on_delete=models.CASCADE)
     price = MoneyField(
@@ -300,7 +303,7 @@ class AttributeChoiceValue(SortableModel):
 
     def get_ordering_queryset(self):
         return self.attribute.values.all()
-        
+
 
 class ProductImage(SortableModel):
     product = models.ForeignKey(

@@ -25,6 +25,7 @@ from ..widgets import RichTextEditorWidget
 from .widgets import ImagePreviewWidget
 
 from ...greinar.models import greinar
+from ckeditor.widgets import CKEditorWidget
 
 class RichTextField(forms.CharField):
     """A field for rich text editor, providing backend sanitization."""
@@ -225,7 +226,7 @@ class ProductForm(forms.ModelForm, AttributesMixin):
     category = TreeNodeChoiceField(queryset=Category.objects.all())
     collections = forms.ModelMultipleChoiceField(
         required=False, queryset=Collection.objects.all())
-    description = RichTextField()
+    #description = forms.CharField(widget=CKEditorWidget())
     # mitt:
     product_id = forms.CharField()
     tags = forms.CharField()

@@ -5,6 +5,7 @@ from django.template.response import TemplateResponse
 
 from .utils import greinars_visible_to_user
 
+from ..dashboard.greinar.forms import greinarForm
 
 def greinar_details(request, slug):
     greinar = get_object_or_404(

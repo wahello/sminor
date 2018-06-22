@@ -55,7 +55,7 @@
 {% block menu_greinars_class %}active{% endblock %}
 
 {% block content %}
-  <form method="post" class="card">
+  <form method="post" enctype="multipart/form-data" class="card">
     {% csrf_token %}
     <div class="row">
       <div class="card-content">
@@ -64,13 +64,19 @@
             {{ form.title|materializecss }}
           </div>
           <div class="row">
+            {{ form.titletext|materializecss }}
+          </div>
+          <div class="row">
             {{ form.content }}
             {{ form.media }}
           </div>
           {% include "dashboard/includes/_google_preview.html" with object=greinar form=form %}
         </div>
         <div class="col s12 l4">
-          {{ form.slug|materializecss }}
+          {{ form.image|materializecss }}
+        </div>
+        <div class="col s12 l4" style="margin-top: 35px;">
+          {{ form.image_size|materializecss }}
         </div>
       </div>
     </div>
