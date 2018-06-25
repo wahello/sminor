@@ -70,8 +70,21 @@
               {% trans "Attribute values" context "Attribute values form title" %}
             </span>
             <div class="row">
-              {{ form|materializecss }}
+              {{ form.name|materializecss }}
             </div>
+
+            {% if attribute.litur %}
+              <div class="row">
+                {{ form.litur|materializecss }}
+                {{ form.media }}
+              </div>
+            {% else %}
+              <div class="row" style="display: none;">
+                {{ form.litur }}
+                {{ form.media }}
+              </div>
+            {% endif %}
+
           </div>
           <div class="card-action right-align">
             <a href="{% url 'dashboard:product-attribute-details' pk=attribute.pk %}" class="btn-flat waves-effect">

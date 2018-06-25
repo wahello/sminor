@@ -94,9 +94,6 @@
                   {{ product_form.tax_rate|materializecss }}
                   {{ product_form.charge_taxes|materializecss }}
                 </div>
-                <div class="row">
-                  {{ product_form.tags|materializecss }}
-                </div>
                 {% if not product.product_type.has_variants %}
                   <div class="row">
                     {{ variant_form.sku|materializecss }}
@@ -138,6 +135,8 @@
               </div>
             </div>
           </div>
+          {{ product_form.errors }}
+          {{ product_form.non_field_errors }}
           <div class="card-action right-align">
             {% if product.pk %}
               <a href="{% url 'dashboard:product-details' product.pk %}" class="btn-flat waves-effect">

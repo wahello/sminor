@@ -29,6 +29,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 
 #
 from ..greinar.models import greinar as greinarTest
+from colorfield.fields import ColorField
 
 
 class Category(MPTTModel, SeoModel):
@@ -125,12 +126,12 @@ class Product(SeoModel):
     # vörunúmer:
     product_id = models.CharField(max_length=128)
     # tags:
-    tags = models.CharField(max_length=128)
-    tagObjects = TagQuerySet.as_manager()
+    #tags = models.CharField(max_length=128)
+    #tagObjects = TagQuerySet.as_manager()
     # vá
     #Greinar = models.ForeignKey(greinarTest, related_name='greinar', on_delete=models.CASCADE)
     Greinar = models.ManyToManyField(
-            greinarTest, blank=True, related_name='greinar')
+            greinarTest, related_name='greinar', blank=True, null=True)
 
     objects = ProductQuerySet.as_manager()
 
@@ -275,6 +276,8 @@ class ProductAttribute(models.Model):
     slug = models.SlugField(max_length=50, unique=True)
     name = models.CharField(max_length=100)
 
+    litur = models.BooleanField(default=False)
+
     class Meta:
         ordering = ('slug', )
 
@@ -293,6 +296,8 @@ class AttributeChoiceValue(SortableModel):
     slug = models.SlugField(max_length=100)
     attribute = models.ForeignKey(
         ProductAttribute, related_name='values', on_delete=models.CASCADE)
+
+    litur = ColorField(default="#FFFFFF")
 
     class Meta:
         ordering = ('sort_order',)

@@ -1,4 +1,5 @@
 import bleach
+
 from django import forms
 from django.conf import settings
 from django.db.models import Count
@@ -229,7 +230,7 @@ class ProductForm(forms.ModelForm, AttributesMixin):
     #description = forms.CharField(widget=CKEditorWidget())
     # mitt:
     product_id = forms.CharField()
-    tags = forms.CharField()
+    #tags = forms.CharField()
 
     Greinar = forms.ModelMultipleChoiceField(
         required=False, queryset=greinar.objects.all())
@@ -416,11 +417,13 @@ class ProductAttributeForm(forms.ModelForm):
 class AttributeChoiceValueForm(forms.ModelForm):
     class Meta:
         model = AttributeChoiceValue
-        fields = ['attribute', 'name']
-        widgets = {'attribute': forms.widgets.HiddenInput()}
+        #fields = ['attribute', 'name', 'litur']
+        #widgets = {'attribute': forms.widgets.HiddenInput()}
+        fields = ['name', 'litur'];
         labels = {
             'name': pgettext_lazy(
                 'Item name', 'Name')}
+
 
     def save(self, commit=True):
         self.instance.slug = slugify(self.instance.name)

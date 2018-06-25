@@ -50,8 +50,9 @@ def get_variant_picker_data(
                 'pk': attribute.pk,
                 'name': attribute.name,
                 'slug': attribute.slug,
+                'litur': attribute.litur,
                 'values': [
-                    {'pk': value.pk, 'name': value.name, 'slug': value.slug}
+                    {'pk': value.pk, 'name': value.name, 'slug': value.slug, 'litur': value.litur}
                     for value in attribute.values.filter(
                         pk__in=available_variants)]})
 

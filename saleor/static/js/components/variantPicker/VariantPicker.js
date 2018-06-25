@@ -20,8 +20,8 @@ export default observer(class VariantPicker extends Component {
 
   constructor (props) {
     super(props);
+    console.log(props);
     const { variants } = this.props;
-
     const variant = variants.filter(v => !!Object.keys(v.attributes).length)[0];
     const params = queryString.parse(location.search);
     let selection = {};
@@ -63,8 +63,13 @@ export default observer(class VariantPicker extends Component {
     const { onAddToCartSuccess, onAddToCartError, store } = this.props;
     const { quantity } = this.state;
     if (quantity > 0 && !store.isEmpty) {
+
+    // MITT URL-FIX
+    const path = window.location.pathname;
       $.ajax({
-        url: this.props.url,
+        // gamalt:
+        // url: this.props.url,
+        url: path + 'add/',
         method: 'post',
         data: {
           quantity: quantity,
@@ -90,8 +95,8 @@ export default observer(class VariantPicker extends Component {
         .forEach(attrId => {
           const attribute = this.matchAttribute(attrId);
           const value = this.matchAttributeValue(attribute, this.state.selection[attrId]);
-          console.log(attribute);
-          console.log(value);
+          //console.log(attribute);
+          //console.log(value);
           if (attribute && value) {
             params[attribute.slug] = value.slug;
           }
@@ -134,12 +139,16 @@ export default observer(class VariantPicker extends Component {
         matchedVariant = variant;
       }
     });
+    // SKOÐA STORE
     store.setVariant(matchedVariant);
   }
 
   render () {
+    // props segir til um yfir-attribute-inn
     const { store, variantAttributes } = this.props;
+    // state segir til um valinn attribute og magn
     const { errors, selection, quantity } = this.state;
+    //console.log(this.state)
     const disableAddToCart = store.isEmpty || !this.checkVariantAvailability();
 
     const addToCartBtnClasses = classNames({

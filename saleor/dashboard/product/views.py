@@ -20,6 +20,8 @@ from ...product.utils.costs import (
 from ..views import staff_member_required
 from .filters import ProductAttributeFilter, ProductFilter, ProductTypeFilter
 
+import logging
+logger = logging.getLogger(__name__)
 
 @staff_member_required
 @permission_required('product.view_product')
@@ -613,6 +615,7 @@ def attribute_choice_value_create(request, attribute_pk):
     attribute = get_object_or_404(ProductAttribute, pk=attribute_pk)
     value = AttributeChoiceValue(attribute_id=attribute_pk)
     form = forms.AttributeChoiceValueForm(request.POST or None, instance=value)
+
     if form.is_valid():
         form.save()
         msg = pgettext_lazy(

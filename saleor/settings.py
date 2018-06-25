@@ -222,7 +222,8 @@ INSTALLED_APPS = [
     #'tinymce',
     #'django_wysiwyg',
     'ckeditor',
-    'ckeditor_uploader']
+    'ckeditor_uploader',
+    'colorfield']
 
 DJANGO_WYSIWYG_FLAVOR = "ckeditor"
 

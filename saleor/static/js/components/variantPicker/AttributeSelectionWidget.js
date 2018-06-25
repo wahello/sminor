@@ -14,7 +14,9 @@ export default class AttributeSelectionWidget extends Component {
   }
 
   render() {
+
     const { attribute, selected } = this.props;
+
     return (
       <div className="variant-picker">
         <div className="variant-picker__label">{attribute.name}</div>
@@ -25,18 +27,48 @@ export default class AttributeSelectionWidget extends Component {
               'btn btn-secondary variant-picker__option': true,
               'active': active
             });
-            return (
-              <label
-                className={labelClass}
-                key={i}
-                onClick={() => this.handleChange(attribute.pk, value.pk)}>
-                <input
-                  defaultChecked={active}
-                  name={value.pk}
-                  type="radio"/>
-                {value.name}
-              </label>
-            );
+
+            // ef það er litur
+            // className = {labelClass}
+            if (attribute.litur) {
+              return (
+                <label
+                  className={labelClass}
+                  // litur á takka
+                  style={{
+                    backgroundColor: value.litur,
+                    width: "40px",
+                    height: "40px",
+                  }}
+                  key={i}
+                  onClick={() => this.handleChange(attribute.pk, value.pk)}>
+                  <input
+                    defaultChecked={active}
+                    name={value.pk}
+                    type="radio"/>
+
+                </label>
+              );
+
+            // ef ekki:
+            } else {
+
+              return (
+                <label
+                  className={labelClass}
+                  key={i}
+                  onClick={() => this.handleChange(attribute.pk, value.pk)}>
+                  <input
+                    defaultChecked={active}
+                    name={value.pk}
+                    type="radio"/>
+                  {value.name}
+                </label>
+              );
+
+            }
+
+
           })}
         </div>
       </div>
